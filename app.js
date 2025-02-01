@@ -10,7 +10,9 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
+app.get('/', (req, res) => {
+  res.json({ message: 'Fetching all users' });
+});
 // Routes
 app.use('/api/users', userRoutes);
 
