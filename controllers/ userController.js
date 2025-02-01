@@ -35,6 +35,7 @@ exports.registerUser = async (req, res) => {
         errors: ['User with this email already exists'],
       });
     }
+
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
@@ -44,6 +45,7 @@ exports.registerUser = async (req, res) => {
       email,
       password: hashedPassword,
     });
+
     await newUser.save();
     return res.status(200).json({
       success: true,
@@ -63,6 +65,7 @@ exports.registerUser = async (req, res) => {
     });
   }
 };
+
 
 // Login user function
 exports.loginUser = async (req, res) => {
